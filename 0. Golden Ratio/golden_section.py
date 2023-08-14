@@ -3,6 +3,7 @@ from turtle import circle, done, hideturtle, lt, pencolor, pensize, rt, fd, spee
 
 PHI = 2 / (sqrt(5) - 1)
 
+
 def square(size):
     for _ in range(4):
         fd(size)
@@ -10,6 +11,7 @@ def square(size):
 
 
 print(PHI)
+
 
 def golden_spiral(n):
     size = 5
@@ -19,6 +21,7 @@ def golden_spiral(n):
         pencolor('red')
         circle(size, 90)
         size *= PHI
+
 
 speed('fastest')
 hideturtle()
