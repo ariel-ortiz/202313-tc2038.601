@@ -10,9 +10,6 @@ def square(size):
         lt(90)
 
 
-print(PHI)
-
-
 def golden_spiral(n):
     size = 5
     for _ in range(n):
@@ -23,6 +20,17 @@ def golden_spiral(n):
         size *= PHI
 
 
+def print_fibonacci(n):
+    a = 1
+    b = 1
+    for _ in range(n):
+        r = b / a
+        print(f'{a:15}{b:15}{r:20.16f}')
+        a, b = b, a + b
+
+
+print_fibonacci(40)
+print(PHI)
 speed('fastest')
 hideturtle()
 pensize(3)
