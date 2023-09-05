@@ -90,6 +90,43 @@ class OrderedSet(Generic[T]):
     def __iter__(self) -> Iterator[T]:
         return OrderedSet.__Iterator(self.__sentinel)
 
+    # Complexity: O(N)
+    def discard(self, value: T) -> None:
+        current = self.__sentinel.next
+        while current != self.__sentinel:
+            if current.info == value:
+                current.prev.next = current.next
+                current.next.prev = current.prev
+                self.__count -= 1
+                return
+            current = current.next
+
+    # Complexity: O(N^2), N = len(self), N = len(other)
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, OrderedSet) and len(self) == len(other):
+            for elem in self:
+                if elem not in other:
+                    return False
+            return True
+        else:
+            return False
+
+    def __le__(self, other: OrderedSet[T]) -> bool:
+        if len(self) <= len(other):
+            for elem in self:
+                if elem not in other:
+                    return False
+            return True
+        else:
+            return False
+
+    def __and__(self, other: OrderedSet[T]) -> OrderedSet[T]:
+        result: OrderedSet[T] = OrderedSet()
+        for elem in self:
+            if elem in other:
+                result.add(elem)
+        return result
+
 
 if __name__ == '__main__':
     a: OrderedSet[int] = OrderedSet([4, 8, 15, 16, 23, 42])
