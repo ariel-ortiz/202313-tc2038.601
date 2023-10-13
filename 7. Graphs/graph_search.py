@@ -13,6 +13,7 @@ g: Graph = {
     'G': ['F']
 }
 
+
 def depth_first_search(
         start: str,
         graph: Graph) -> Iterator[str]:
