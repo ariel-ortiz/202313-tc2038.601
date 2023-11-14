@@ -27,13 +27,13 @@ def is_safe(board: Board, row: int, col: int) -> bool:
         if board[row][i]:
             return False
 
-    # Other queen in upper left diagonal
+    # Other queen in upper left diagonal?
     for i, j in zip(range(row - 1, -1, -1),
                     range(col - 1, -1, -1)):
         if board[i][j]:
             return False
 
-    # Other queen in lower lef diagonal
+    # Other queen in lower left diagonal?
     for i, j in zip(range(row + 1, len(board)),
                     range(col - 1, -1, -1)):
         if board[i][j]:
